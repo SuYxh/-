@@ -9,7 +9,14 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'main',
-    component: Main
+    component: Main,
+    children:[
+      {
+        path: '/categories/create',
+        name: 'categories',
+        component: () => import(/* webpackChunkName: "about" */ '../views/CategoryEdit.vue')
+      }
+    ]
   },
   // {
   //   path: '/about',
