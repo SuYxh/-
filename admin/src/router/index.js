@@ -17,6 +17,12 @@ Vue.use(VueRouter)
         component: () => import(/* webpackChunkName: "about" */ '../views/CategoryEdit.vue')
       },
       {
+        path: '/categories/edit/:id',
+        name: 'category_edit',
+        component: () => import(/* webpackChunkName: "about" */ '../views/CategoryEdit.vue'),
+        props:true
+      },
+      {
         path: '/categories/list',
         name: 'category_list',
         component: () => import(/* webpackChunkName: "about" */ '../views/CategoryList.vue')
