@@ -27,8 +27,8 @@ module.exports = app => {
 
     // 分类列表
     router.get('/categories', async (req,res) => {
-        // 
-       const items = await Category.find().limit(10)
+        // populate() 关联字段查询 好像  加不加 populate() 有什么区别 看看接口返回的数据 加了返回的是一个对象
+       const items = await Category.find().populate('parent').limit(10)
        res.send(items)
     })
 
