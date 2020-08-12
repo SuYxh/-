@@ -1,0 +1,12 @@
+{
+  "name": "wzry_server",
+  "version": "1.0.0",
+  "description": "全站开发王者荣耀后台和网站",
+  "main": "index.js",
+  "scripts": {
+    "serve":"nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "yxh",
+  "license": "MIT"
+}
