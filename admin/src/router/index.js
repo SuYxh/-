@@ -13,8 +13,13 @@ Vue.use(VueRouter)
     children:[
       {
         path: '/categories/create',
-        name: 'categories',
+        name: 'category_create',
         component: () => import(/* webpackChunkName: "about" */ '../views/CategoryEdit.vue')
+      },
+      {
+        path: '/categories/list',
+        name: 'category_list',
+        component: () => import(/* webpackChunkName: "about" */ '../views/CategoryList.vue')
       }
     ]
   },
