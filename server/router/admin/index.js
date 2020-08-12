@@ -17,6 +17,14 @@ module.exports = app => {
         res.send(model)
     })
 
+    // 编辑分类 -- 删除
+    router.delete('/categories/:id', async (req,res) => {
+        await Category.findByIdAndDelete(req.params.id)
+        res.send({
+            success:true
+        })
+    })
+
     // 分类列表
     router.get('/categories', async (req,res) => {
         // 
