@@ -20,9 +20,15 @@ export default {
         }
     },
     methods: {
-        save(){
-            // 请求接口 提交数据
-            // this.$http.post()
+        async save(){
+            // 请求接口 提交数据   
+            // 注意判断一下 model 是否有值
+            const res = await this.$http.post('categories',this.model)
+            this.$router.push('/categories/list')
+            this.$message({
+                type:'success',
+                message:'保存成功！'
+            })
         }
     },
 }

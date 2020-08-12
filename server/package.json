@@ -4,9 +4,14 @@
   "description": "全站开发王者荣耀后台和网站",
   "main": "index.js",
   "scripts": {
-    "serve":"nodemon index.js",
+    "serve": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "yxh",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.0.0-alpha.8",
+    "mongoose": "^5.9.28"
+  }
 }
