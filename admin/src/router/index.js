@@ -14,28 +14,45 @@ Vue.use(VueRouter)
       {
         path: '/categories/create',
         name: 'category_create',
-        component: () => import(/* webpackChunkName: "about" */ '../views/CategoryEdit.vue')
+        component: () => import('../views/CategoryEdit.vue')
       },
       {
         path: '/categories/edit/:id',
         name: 'category_edit',
-        component: () => import(/* webpackChunkName: "about" */ '../views/CategoryEdit.vue'),
+        component: () => import('../views/CategoryEdit.vue'),
         props:true
       },
       {
         path: '/categories/list',
         name: 'category_list',
-        component: () => import(/* webpackChunkName: "about" */ '../views/CategoryList.vue')
-      }
+        component: () => import('../views/CategoryList.vue')
+      },
+      // 物品
+      {
+        path: '/items/create',
+        name: 'items_create',
+        component: () => import('../views/ItemEdit.vue')
+      },
+      {
+        path: '/items/edit/:id',
+        name: 'items_edit',
+        component: () => import('../views/ItemEdit.vue'),
+        props:true
+      },
+      {
+        path: '/items/list',
+        name: 'items_list',
+        component: () => import('../views/ItemList.vue')
+      },
     ]
-  },
+  }
   // {
   //   path: '/about',
   //   name: 'About',
   //   // route level code-splitting
   //   // this generates a separate chunk (about.[hash].js) for this route
   //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  //   component: () => import('../views/About.vue')
   // }
 ]
 
