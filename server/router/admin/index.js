@@ -65,4 +65,16 @@ module.exports = app => {
             next()
         } 
     ,router)
+
+    const multer = require('multer');
+    // 上传中间件 dest 表示上传到哪里去
+    const upload = multer({dest: __dirname + '/../../uploads'})
+    // 中间件 upload.single() 表示单个文件的上传，里面的字段名为 在network中上传接口中 FormData 字段名
+    app.post('/admin/api/upload',upload.single('file'),async (req,res) => {
+        // express 本身处理不了上传的数据，这里采用 multer 来进行处理 ，上传的文件二进制可在 network接口中查看
+        const file = req.file
+        // 地址一定是 服务端 的地址 ，如果想让服务端的地址可以访问 一定需要配置路由
+        file.url = `http://localhost:3000/uploads/${file.filename}`
+        res.send(file)
+    })
 }

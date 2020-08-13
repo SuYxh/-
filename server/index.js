@@ -7,6 +7,8 @@ const app = express()
 app.use(require('cors')())
 
 app.use(express.json())
+// 静态文件
+app.use('/uploads',express.static(__dirname + '/uploads'))
 
 
 // 后台的路由
