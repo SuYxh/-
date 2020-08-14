@@ -12,6 +12,11 @@ Vue.use(VueRouter)
     component: Main,
     children:[
       {
+        path: '/',
+        name: 'helloworld',
+        component: () => import('../components/HelloWorld.vue')
+      },
+      {
         path: '/categories/create',
         name: 'category_create',
         component: () => import('../views/CategoryEdit.vue')
@@ -43,6 +48,23 @@ Vue.use(VueRouter)
         path: '/items/list',
         name: 'items_list',
         component: () => import('../views/ItemList.vue')
+      },
+      // 英雄
+      {
+        path: '/heroes/create',
+        name: 'heroes_create',
+        component: () => import('../views/HeroEdit.vue')
+      },
+      {
+        path: '/heroes/edit/:id',
+        name: 'heroes_edit',
+        component: () => import('../views/HeroEdit.vue'),
+        props:true
+      },
+      {
+        path: '/heroes/list',
+        name: 'heroes_list',
+        component: () => import('../views/HeroList.vue')
       },
     ]
   }
