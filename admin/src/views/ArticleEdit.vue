@@ -16,7 +16,8 @@
               <el-input v-model="model.title"></el-input>
           </el-form-item>
           <el-form-item label="详情">
-              <el-input type="textarea" v-model="model.body"></el-input>
+              <vue-editor v-model="model.body"></vue-editor>
+              <!-- <el-input type="textarea" v-model="model.body"></el-input> -->
           </el-form-item>
           <el-form-item>
               <el-button type="primary" native-type="submit">保存</el-button>
@@ -26,11 +27,15 @@
 </template>
 
 <script>
+import { VueEditor } from "vue2-editor";
 export default {
     /**
      * 编辑和新增用一个组件，在save()方法中通过是否含有id来判断是新增还是编辑
      * 编辑的时候数据反写，路由传参，传递 id 通过id查询 
     */
+    components: {
+        VueEditor
+    },
     props: {
         id: { },
     },
