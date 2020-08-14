@@ -83,6 +83,23 @@ Vue.use(VueRouter)
         name: 'articles_list',
         component: () => import('../views/ArticleList.vue')
       },
+       // 广告位
+       {
+        path: '/ads/create',
+        name: 'ads_create',
+        component: () => import('../views/AdEdit.vue')
+      },
+      {
+        path: '/ads/edit/:id',
+        name: 'ads_edit',
+        component: () => import('../views/AdEdit.vue'),
+        props:true
+      },
+      {
+        path: '/ads/list',
+        name: 'ads_list',
+        component: () => import('../views/AdList.vue')
+      },
     ]
   }
   // {
