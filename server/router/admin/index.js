@@ -78,3 +78,4 @@ module.exports = app => {
         res.send(file)
     })
 }
+
