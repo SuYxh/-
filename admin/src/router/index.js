@@ -66,6 +66,23 @@ Vue.use(VueRouter)
         name: 'heroes_list',
         component: () => import('../views/HeroList.vue')
       },
+      // 文章
+      {
+        path: '/articles/create',
+        name: 'articles_create',
+        component: () => import('../views/ArticleEdit.vue')
+      },
+      {
+        path: '/articles/edit/:id',
+        name: 'articles_edit',
+        component: () => import('../views/ArticleEdit.vue'),
+        props:true
+      },
+      {
+        path: '/articles/list',
+        name: 'articles_list',
+        component: () => import('../views/ArticleList.vue')
+      },
     ]
   }
   // {
