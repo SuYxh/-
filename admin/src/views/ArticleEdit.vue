@@ -16,7 +16,7 @@
               <el-input v-model="model.title"></el-input>
           </el-form-item>
           <el-form-item label="详情">
-              <vue-editor v-model="model.body"></vue-editor>
+              <vue-editor useCustomImageHandler @image-added="handleImageAdded" v-model="model.body"></vue-editor>
               <!-- <el-input type="textarea" v-model="model.body"></el-input> -->
           </el-form-item>
           <el-form-item>
@@ -75,6 +75,19 @@ export default {
         async fetchCategories(){
             const res = await this.$http.get(`rest/categories`)
             this.categories = res.data
+        },
+
+        async handleImageAdded(file, Editor, cursorLocation, resetUploader) {
+            // An example of using FormData
+            // NOTE: Your key could be different such as:
+            // formData.append('file', file)
+            //  cursorLocation 光标位置
+            const formData = new FormData();
+            //  "file" 表示的是上传的字段名称，和后端保持一致
+            formData.append("file", file);
+            const res = await this.$http.post('upload',formData)
+            Editor.insertEmbed(cursorLocation, "image", res.data.url);
+            resetUploader();  // 重置上传的东西
         }
     },
 }
