@@ -100,6 +100,23 @@ Vue.use(VueRouter)
         name: 'ads_list',
         component: () => import('../views/AdList.vue')
       },
+      // 管理员
+      {
+        path: '/admin_users/create',
+        name: 'admin_users_create',
+        component: () => import('../views/AdminUserEdit.vue')
+      },
+      {
+        path: '/admin_users/edit/:id',
+        name: 'admin_users_edit',
+        component: () => import('../views/AdminUserEdit.vue'),
+        props:true
+      },
+      {
+        path: '/admin_users/list',
+        name: 'admin_users_list',
+        component: () => import('../views/AdminUserList.vue')
+      },
     ]
   }
   // {
