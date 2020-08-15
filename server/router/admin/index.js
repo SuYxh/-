@@ -14,6 +14,9 @@
 
 module.exports = app => {
     const express = require('express');
+    const jwt = require('jsonwebtoken');
+    const assert = require('http-assert')
+    const AdminUser = require('../../models/AdminUser');
     
     // express 的子路由
     const router = express.Router({ mergeParams:true })  // 把父级的参数合并到url里面来

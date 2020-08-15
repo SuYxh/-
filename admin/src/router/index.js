@@ -10,7 +10,9 @@ Vue.use(VueRouter)
   {
     path:'/login',
     name:'login',
-    component:Login
+    component:Login,
+    //  在官方教程中的 路由元信息 一节中有
+    meta:{ isPublic:true }
   },
   {
     path: '/',
@@ -125,14 +127,6 @@ Vue.use(VueRouter)
       },
     ]
   }
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import('../views/About.vue')
-  // }
 ]
 
 const router = new VueRouter({
@@ -140,5 +134,22 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+
+// 导航守卫
+router.beforeEach((to, from, next) => {
+  // to and from are both route objects. must call `next`.
+  console.log(to.meta)
+  // 如果进的不是登录页面 而且还没有 token 就跳转至 登录页面
+  if (!to.meta.isPublic && !localStorage.token) {
+    Vue.prototype.$message({
+      type:'error',
+      message:'调皮，不允许访问哦'
+    })
+    return next('/login')
+  }
+  next()
+})
+
 
 export default router
