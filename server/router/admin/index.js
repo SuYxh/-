@@ -77,5 +77,45 @@ module.exports = app => {
         file.url = `http://localhost:3000/uploads/${file.filename}`
         res.send(file)
     })
+
+
+    // 登录的接口 路由
+    app.post('/admin/api/login',async (req,res) => {
+        // 传递过来的数据为 {username: "admin", password: "123456"} 
+        // 将我们需要的字段解构出来
+        const {username,password} = req.body  
+        // 拿着数据去数据库查找有没有
+        // 1.根据用户名找用户
+        const AdminUser = require('../../models/AdminUser');
+        // 因为在AdminUser模型中设置了select:false，所以这里需要使用 select('+password') 来讲密码选出来，下面会用他进行校验
+        // 前缀 - 被排除 ，前缀 + 被强制选择
+        const user =await AdminUser.findOne({username}).select('+password') 
+        console.log(user)
+        //  1.1 判断用户是否存在，存在则进行下一步，不存在则抛出异常，给前端返回 用户不存在
+        if (!user) {
+            // 422 表示客户端提交的数据有问题
+            return res.status(422).send({
+                message:'用户不存在！'
+            })
+        }
+        // 2.校验 密码 , 因为通过使用 bcrypt 进行加密的，所以在 通过 bcrypt 进行校验
+        //  compareSync(明文,密文)
+        const isValid = require('bcrypt').compareSync(password,user.password)
+        if (!isValid) {
+            return res.status(422).send({
+                message:'用户名或者密码错误！'
+            })
+        }
+        // 3.返回 token 使用 jsonwebtoken 的包
+        const jwt = require('jsonwebtoken');
+        // sign 签名 用来生成 token ，
+        // sign(参数一,参数二) 
+        // 参数一：要加入token中的信息,任何信息均可
+        // 参数二：生成的token的时候，给定的秘钥，密钥作为全局变量，在index.js中进行定义，方便维护
+        const token =  jwt.sign({id:user._id},app.get('secret'))
+
+
+        res.send({token,username})
+    })
 }
 

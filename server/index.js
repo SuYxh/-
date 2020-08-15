@@ -2,6 +2,9 @@ const express = require('express');
 
 const app = express()
 
+// 设置token签名的一个密钥，改值应该放在 环境变量 中
+app.set('secret','yxhhxy0912')
+
 // 中间件
 // 引入 cors 
 app.use(require('cors')())
