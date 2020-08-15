@@ -16,10 +16,12 @@
         <el-input v-model="model.name"></el-input>
       </el-form-item>
       <el-form-item label="图标">
-          <!--请求的api http://localhost:3000/admin/api/upload -->
+        <!--请求的api http://localhost:3000/admin/api/upload -->
+        <!-- uploadUrl 和 getAuthHeaders() 在 main.js中进行的定义，方便使用 -->
         <el-upload
           class="avatar-uploader"
-          :action="$http.defaults.baseURL + '/upload'"
+          :action="uploadUrl"
+          :headers="getAuthHeaders()"
           :show-file-list="false"
           :on-success="handleSuccess"
         >

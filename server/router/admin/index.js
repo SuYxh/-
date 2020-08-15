@@ -77,6 +77,12 @@ module.exports = app => {
     //  这里加了2个中间件，请求资源的时候，先看看 是否是登录状态，在判断一下 模型是否存在 ，在挂在路由
     app.use('/admin/api/rest/:resource',authMiddleware,resourceMiddleware,router)
 
+    /**
+     * 文件上传失败的原因： 我们只在axios请求拦截器中携带了token，在上传中并没有携带，所以报错了
+     * 解决方案： 在admin目录的main.js 中 使用 Vue.mixin()中写一个获取token的方法，当然也可以写成data，
+     * 但是由于响应式系统的原因，可能后来没法带上token，所以写成方法；然后在上传图片中加入 :headers="getAuthHeaders()"
+     * 使其带上 token
+     */
     const multer = require('multer');
     // 上传中间件 dest 表示上传到哪里去
     const upload = multer({dest: __dirname + '/../../uploads'})
