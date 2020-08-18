@@ -14,7 +14,7 @@
       </el-form-item>-->
       <el-form-item label="名称">
         <el-input v-model="model.name"></el-input>
-      </el-form-item>
+      </el-form-item> 
       <el-form-item label="图标">
         <!--请求的api http://localhost:3000/admin/api/upload -->
         <!-- uploadUrl 和 getAuthHeaders() 在 main.js中进行的定义，方便使用 -->

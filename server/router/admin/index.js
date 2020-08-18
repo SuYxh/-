@@ -17,6 +17,7 @@ module.exports = app => {
     const jwt = require('jsonwebtoken');
     const assert = require('http-assert')
     const AdminUser = require('../../models/AdminUser');
+    const secret = require('../../secret')
     
     // express 的子路由
     const router = express.Router({ mergeParams:true })  // 把父级的参数合并到url里面来
@@ -83,6 +84,8 @@ module.exports = app => {
      * 但是由于响应式系统的原因，可能后来没法带上token，所以写成方法；然后在上传图片中加入 :headers="getAuthHeaders()"
      * 使其带上 token
      */
+
+    /*  本地存储
     const multer = require('multer');
     // 上传中间件 dest 表示上传到哪里去
     const upload = multer({dest: __dirname + '/../../uploads'})
@@ -94,6 +97,27 @@ module.exports = app => {
         file.url = `http://localhost:3000/uploads/${file.filename}`
         res.send(file)
     })
+    */
+
+    /** 存在阿里云上 */
+    const multer = require('multer');
+    const MAO = require('multer-aliyun-oss');
+    const upload = multer({
+        storage: MAO({
+            config: {
+                region: secret.region,
+                accessKeyId: secret.accessKeyId,
+                accessKeySecret: secret.accessKeySecret,
+                bucket: secret.bucket
+            }
+        })
+    });
+    app.post('/admin/api/upload',authMiddleware,upload.single('file'),async (req,res) => {
+        const file = req.file
+        // file.url = `http://localhost:3000/uploads/${file.filename}`
+        res.send(file)
+    })
+
 
 
     // 登录的接口 路由

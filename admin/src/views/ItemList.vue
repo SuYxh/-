@@ -1,4 +1,4 @@
-<template>
+<template> 
   <div class="category-list">
     <h1>物品列表</h1>
     <el-table :data="items">
