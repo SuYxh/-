@@ -19,3 +19,53 @@ a {
     color: #999; 
 }
 
+
+
+// 颜色 如果定义的颜色与 颜色本身有冲突(单词一样)，最好用把定义的颜色引起来
+// 可以 理解为 对象
+$colors:(
+    "primary":#db9e3f,
+    "white":#fff,
+    "black":#000,
+    "dark":#222,
+    "dark-1":#343440,
+    "grey":#999,
+    "light":#f9f9f9,
+);
+
+@each $colorKey,$color in $colors {
+    // 文本颜色
+    .text-#{$colorKey} {
+        color: $color
+    }
+    // 背景颜色
+    .bg-#{$colorKey} {
+        background-color: $color
+    }
+}
+
+
+// 文本
+// 定义对齐方式  理解为 数组
+@each $var in (left,center,right) {
+    .text-#{$var} {
+        text-align:$var
+    }
+}
+
+// font-size
+$base-font-size:1rem;
+$font-sizes:(
+    xs:0.769231,  // 10px
+    sm:0.923077,  // 12px
+    md:1,         //13px
+    lg:1.076923,  // 14px
+    xl:1.230769,  // 16px
+);
+
+@each $sizeKey,$size in $font-sizes {
+    // 文本颜色
+    .fs-#{$sizeKey} {
+        font-size: $size * $base-font-size;
+    }
+}
