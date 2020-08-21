@@ -22,6 +22,18 @@ Vue.component('m-card', Card)
 import ListCard from './components/ListCard.vue'
 Vue.component('m-list-card', ListCard)
 
+
+import axios from 'axios'
+ 
+const http = axios.create({
+  baseURL: 'http://localhost:3000/web/api',
+  timeout: 5000
+})
+
+Vue.prototype.$http = http
+
+
+
 Vue.config.productionTip = false
 
 new Vue({
