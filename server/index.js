@@ -18,8 +18,8 @@ app.use('/uploads',express.static(__dirname + '/uploads'))
 require('./router/admin/index')(app);
 // 引入数据库
 require('./plugins/db')(app);
-
-
+// 前台数据初始化路由
+require('./router/web/index')(app);
 
 
 app.listen(3000,() => {

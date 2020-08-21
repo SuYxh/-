@@ -39,6 +39,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+.topbar{
+  position: sticky;  // 表示吸顶的效果
+  top:0;
+  z-index: 99;
+}
 </style>

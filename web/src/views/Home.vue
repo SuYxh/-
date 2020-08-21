@@ -31,7 +31,7 @@
       </div>
       <!-- end -of icons -->
 
-      <m-card icon="menu1" title="精彩视频"></m-card>
+      <!-- <m-card icon="menu1" title="精彩视频"></m-card>
       <m-card icon="menu1" title="图文攻略"></m-card>
       <m-card icon="menu1" title="美文欣赏">
        <p> 1、人生若没有高度，看到的都是问题…若没有格局，看到的都是鸡毛蒜皮…不要在意眼前的苟且，还有未来的诗与远方。</p>
@@ -39,7 +39,7 @@
        <p>3、夜的味道，月的味道，祝福和期待的的味道。最终都汇成诗与远方，化成深深的思念，送给远方的你。</p>
        <p>4、好像一直在迷迷糊糊度日，想起总是无比烦躁，丢失了梦想和激情，就像乌云蔽日，遮盖了初心和信念。本应眼眸清澈，心怀碧海蓝天，走向诗与远方。请助我一臂之力。</p>
        <p>5、毕业了，除了诗与远方，还有眼前的“苟且”。</p>
-      </m-card>
+      </m-card> -->
 
       <m-list-card icon="menu1" title="新闻资讯" :categories="newsCats">
         <template #items="{category}">
@@ -97,46 +97,47 @@
           填充完毕后再使用 map 对填充的数据进行修改
        */
       newsCats: [
-        {
-          name:'热门',
-          newsList:new Array(5).fill(1).map( v => ({
-            categoryName:'公告',
-            title:'6月2日全服不停机公告',
-            date:'06/01'
-          }))
-        },
-        {
-          name:'新闻',
-          newsList:new Array(5).fill(1).map( v => ({
-            categoryName:'公告',
-            title:'6月2日全服不停机公告',
-            date:'06/01'
-          }))
-        },
-        {
-          name:'公告',
-          newsList:new Array(5).fill(1).map( v => ({
-            categoryName:'公告',
-            title:'6月2日全服不停机公告',
-            date:'06/01'
-          }))
-        },
-        {
-          name:'活动',
-          newsList:new Array(5).fill(1).map( v => ({
-            categoryName:'公告',
-            title:'6月2日全服不停机公告',
-            date:'06/01'
-          }))
-        },
-        {
-          name:'赛事',
-          newsList:new Array(5).fill(1).map( v => ({
-            categoryName:'公告',
-            title:'6月2日全服不停机公告',
-            date:'06/01'
-          }))
-        }
+        // 下面为假数据
+        // {
+        //   name:'热门',
+        //   newsList:new Array(5).fill(1).map( v => ({
+        //     categoryName:'公告',
+        //     title:'6月2日全服不停机公告',
+        //     date:'06/01'
+        //   }))
+        // },
+        // {
+        //   name:'新闻',
+        //   newsList:new Array(5).fill(1).map( v => ({
+        //     categoryName:'公告',
+        //     title:'6月2日全服不停机公告',
+        //     date:'06/01'
+        //   }))
+        // },
+        // {
+        //   name:'公告',
+        //   newsList:new Array(5).fill(1).map( v => ({
+        //     categoryName:'公告',
+        //     title:'6月2日全服不停机公告',
+        //     date:'06/01'
+        //   }))
+        // },
+        // {
+        //   name:'活动',
+        //   newsList:new Array(5).fill(1).map( v => ({
+        //     categoryName:'公告',
+        //     title:'6月2日全服不停机公告',
+        //     date:'06/01'
+        //   }))
+        // },
+        // {
+        //   name:'赛事',
+        //   newsList:new Array(5).fill(1).map( v => ({
+        //     categoryName:'公告',
+        //     title:'6月2日全服不停机公告',
+        //     date:'06/01'
+        //   }))
+        // }
       ],
       }
     },
@@ -148,7 +149,15 @@
     mounted() {
       console.log('Current Swiper instance object', this.swiper)
       this.swiper.slideTo(3, 1000, false)
-    }
+    },
+    created () {
+      this.fetchNewsCats()
+    },
+    methods: {
+      async fetchNewsCats() {
+        
+      }
+    },
   }
 </script>
 

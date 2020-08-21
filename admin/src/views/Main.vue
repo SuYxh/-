@@ -68,7 +68,8 @@
       </el-header>
 
       <el-main>
-          <router-view></router-view>
+        <!-- 组件复用的时候注意通过key来进行组件的区分 -->
+          <router-view :key="$route.path"></router-view>
         <!-- <el-table :data="tableData">
           <el-table-column prop="date" label="日期" width="140"></el-table-column>
           <el-table-column prop="name" label="姓名" width="120"></el-table-column>
