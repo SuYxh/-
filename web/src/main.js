@@ -19,6 +19,9 @@ Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
 import Card from './components/Card.vue'
 Vue.component('m-card', Card)
 
+import ListCard from './components/ListCard.vue'
+Vue.component('m-list-card', ListCard)
+
 Vue.config.productionTip = false
 
 new Vue({

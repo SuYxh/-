@@ -31,46 +31,6 @@
       </div>
       <!-- end -of icons -->
 
-      <m-card icon="menu1" title="新闻资讯">
-          <!-- 导航 -->
-            <div class="nav jc-between">
-              <!-- 1 -->
-              <div class="nav-item active">
-                <div class="nav-link">新闻 </div>
-              </div>
-              <!-- 2 -->
-              <div class="nav-item">
-                <div class="nav-link">新闻 </div>
-              </div>
-              <!-- 3 -->
-              <div class="nav-item">
-                <div class="nav-link">新闻 </div>
-              </div>
-              <!-- 4 -->
-              <div class="nav-item">
-                <div class="nav-link">新闻 </div>
-              </div>
-              <!-- 5 -->
-              <div class="nav-item">
-                <div class="nav-link">新闻 </div>
-              </div>
-            </div>
-
-            <!-- 内容 -->
-              <div class="pt-3">
-                  <swiper >
-                    <swiper-slide v-for="m in 5" :key="m">
-                      <div class="py-2" v-for="n in 5" :key="n">
-                        <span>[新闻]</span>
-                        <span>|</span>
-                        <span>夏日新版，即将上线</span>
-                        <span>06/02</span>
-                      </div>
-                    </swiper-slide>
-                  </swiper>
-              </div>
-      </m-card>
-
       <m-card icon="menu1" title="精彩视频"></m-card>
       <m-card icon="menu1" title="图文攻略"></m-card>
       <m-card icon="menu1" title="美文欣赏">
@@ -80,7 +40,33 @@
        <p>4、好像一直在迷迷糊糊度日，想起总是无比烦躁，丢失了梦想和激情，就像乌云蔽日，遮盖了初心和信念。本应眼眸清澈，心怀碧海蓝天，走向诗与远方。请助我一臂之力。</p>
        <p>5、毕业了，除了诗与远方，还有眼前的“苟且”。</p>
       </m-card>
+
+      <m-list-card icon="menu1" title="新闻资讯" :categories="newsCats">
+        <template #items="{category}">
+          <div class="py-2" v-for="(news,i) in category.newsList" :key="i">
+            <span>[{{news.categoryName}}]</span>
+            <span>|</span>
+            <span>{{ news.title }}</span>
+            <span>{{ news.date }}</span>
+          </div>
+        </template>
+      </m-list-card>
    
+
+    <!-- <m-list-card icon="menu1" title="新闻资讯" :categories="newsCats">
+      <template #items="{category}">
+        <router-link 
+        tag="div"
+        :to="`/articles/${news._id}`"
+        class="py-2 fs-lg d-flex" 
+        v-for="(news, i) in category.newsList" :key="i">
+          <span class="text-info">[{{news.categoryName}}]</span>
+          <span class="px-2">|</span>
+          <span class="flex-1 text-dark-1 text-ellipsis pr-2">{{news.title}}</span>
+          <span class="text-grey-1 fs-sm">{{news.createdAt | date}}</span>
+        </router-link>
+      </template>
+    </m-list-card> -->
 
 
 
@@ -99,7 +85,59 @@
             el: '.swiper-pagination'
           },
           // Some Swiper option/callback...
+        },
+      /**
+       * Array(5).fill(1).map( v => ({
+            categoryName:'公告',
+            title:'6月2日全服不停机公告',
+            date:'06/01'
+          }))
+          解释：将这个对象重复5次放在数组中
+          原理 定义一个数组有5个元素，什么样子的元素？用fill() 方法进行填充，
+          填充完毕后再使用 map 对填充的数据进行修改
+       */
+      newsCats: [
+        {
+          name:'热门',
+          newsList:new Array(5).fill(1).map( v => ({
+            categoryName:'公告',
+            title:'6月2日全服不停机公告',
+            date:'06/01'
+          }))
+        },
+        {
+          name:'新闻',
+          newsList:new Array(5).fill(1).map( v => ({
+            categoryName:'公告',
+            title:'6月2日全服不停机公告',
+            date:'06/01'
+          }))
+        },
+        {
+          name:'公告',
+          newsList:new Array(5).fill(1).map( v => ({
+            categoryName:'公告',
+            title:'6月2日全服不停机公告',
+            date:'06/01'
+          }))
+        },
+        {
+          name:'活动',
+          newsList:new Array(5).fill(1).map( v => ({
+            categoryName:'公告',
+            title:'6月2日全服不停机公告',
+            date:'06/01'
+          }))
+        },
+        {
+          name:'赛事',
+          newsList:new Array(5).fill(1).map( v => ({
+            categoryName:'公告',
+            title:'6月2日全服不停机公告',
+            date:'06/01'
+          }))
         }
+      ],
       }
     },
     computed: {
