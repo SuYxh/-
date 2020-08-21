@@ -31,7 +31,60 @@
       </div>
       <!-- end -of icons -->
 
-      <i class="iconfont icon-menu1"></i>
+      <m-card icon="menu1" title="新闻资讯">
+          <!-- 导航 -->
+            <div class="nav jc-between">
+              <!-- 1 -->
+              <div class="nav-item active">
+                <div class="nav-link">新闻 </div>
+              </div>
+              <!-- 2 -->
+              <div class="nav-item">
+                <div class="nav-link">新闻 </div>
+              </div>
+              <!-- 3 -->
+              <div class="nav-item">
+                <div class="nav-link">新闻 </div>
+              </div>
+              <!-- 4 -->
+              <div class="nav-item">
+                <div class="nav-link">新闻 </div>
+              </div>
+              <!-- 5 -->
+              <div class="nav-item">
+                <div class="nav-link">新闻 </div>
+              </div>
+            </div>
+
+            <!-- 内容 -->
+              <div class="pt-3">
+                  <swiper >
+                    <swiper-slide v-for="m in 5" :key="m">
+                      <div class="py-2" v-for="n in 5" :key="n">
+                        <span>[新闻]</span>
+                        <span>|</span>
+                        <span>夏日新版，即将上线</span>
+                        <span>06/02</span>
+                      </div>
+                    </swiper-slide>
+                  </swiper>
+              </div>
+      </m-card>
+
+      <m-card icon="menu1" title="精彩视频"></m-card>
+      <m-card icon="menu1" title="图文攻略"></m-card>
+      <m-card icon="menu1" title="美文欣赏">
+       <p> 1、人生若没有高度，看到的都是问题…若没有格局，看到的都是鸡毛蒜皮…不要在意眼前的苟且，还有未来的诗与远方。</p>
+       <p>2、人生再糟，也应该乐观起来。这世界有朝夕与四季，还有诗与远方!</p>
+       <p>3、夜的味道，月的味道，祝福和期待的的味道。最终都汇成诗与远方，化成深深的思念，送给远方的你。</p>
+       <p>4、好像一直在迷迷糊糊度日，想起总是无比烦躁，丢失了梦想和激情，就像乌云蔽日，遮盖了初心和信念。本应眼眸清澈，心怀碧海蓝天，走向诗与远方。请助我一臂之力。</p>
+       <p>5、毕业了，除了诗与远方，还有眼前的“苟且”。</p>
+      </m-card>
+   
+
+
+
+
 
   </div>
 </template>

@@ -16,6 +16,8 @@ import 'swiper/swiper-bundle.css'
 
 Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
 
+import Card from './components/Card.vue'
+Vue.component('m-card', Card)
 
 Vue.config.productionTip = false
 
