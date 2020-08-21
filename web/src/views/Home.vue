@@ -29,6 +29,9 @@
           收起
         </div>
       </div>
+      <!-- end -of icons -->
+
+      <i class="iconfont icon-menu1"></i>
 
   </div>
 </template>
