@@ -118,7 +118,14 @@ module.exports = app => {
         res.send(file)
     })
 
-
+    // 注册接口
+    app.post('/admin/api/reg',async (req,res) =>{
+        // const {username,password} = req.body  c
+        console.log('req.body',req.body)
+        // const model = await  req.Model.create(req.body)
+        const user = await AdminUser.create(req.body)
+        res.send(user)
+    })
 
     // 登录的接口 路由
     app.post('/admin/api/login',async (req,res) => {

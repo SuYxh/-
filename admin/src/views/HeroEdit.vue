@@ -64,6 +64,7 @@
             <!--请求的api http://localhost:3000/admin/api/upload -->
             <el-upload
               class="avatar-uploader"
+              :headers="getAuthHeaders()"
               :action="$http.defaults.baseURL + '/upload'"
               :show-file-list="false"
               :on-success="handleSuccess"
@@ -84,9 +85,10 @@
                 <el-input v-model="item.name"></el-input>
               </el-form-item>
               <el-form-item label="图标">
+                <!-- :action="$http.defaults.baseURL + '/upload'" -->
                 <el-upload
                   class="avatar-uploader"
-                  :action="$http.defaults.baseURL + '/upload'"
+                  :action="uploadUrl"
                   :headers="getAuthHeaders()"
                   :show-file-list="false"
                   :on-success="res => $set(item,'icon',res.url)"

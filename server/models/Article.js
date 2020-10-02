@@ -5,6 +5,7 @@ const schema = new mongoose.Schema({
   title: { type: String },
   body: { type: String },
 }, {
+  // timestamps 将会自动带上 文件的创建时间和更新时间
   timestamps: true
 })
 

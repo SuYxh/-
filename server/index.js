@@ -22,6 +22,6 @@ require('./plugins/db')(app);
 require('./router/web/index')(app);
 
 
-app.listen(3000,() => {
+app.listen(3002,() => {
     console.log('服务已启动！http://localhost:3000')
 })
