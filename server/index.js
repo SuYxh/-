@@ -11,6 +11,8 @@ app.use(require('cors')())
 
 app.use(express.json())
 // 静态文件
+app.use('/', express.static(__dirname + '/web'))
+app.use('/admin', express.static(__dirname + '/admin'))
 app.use('/uploads',express.static(__dirname + '/uploads'))
 
 
