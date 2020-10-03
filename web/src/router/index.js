@@ -14,6 +14,11 @@ Vue.use(VueRouter)
         path: '/',
         name: 'Home',
         component: () => import('../views/Home.vue')
+      },
+      { path: '/articles/:id', 
+        name: 'article', 
+        component: () => import('../views/Article.vue'), 
+        props: true 
       }
     ]
   },

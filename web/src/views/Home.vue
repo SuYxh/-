@@ -41,7 +41,7 @@
        <p>5、毕业了，除了诗与远方，还有眼前的“苟且”。</p>
       </m-card> -->
 
-      <m-list-card icon="menu1" title="新闻资讯" :categories="newsCats">
+      <!-- <m-list-card icon="menu1" title="新闻资讯" :categories="newsCats">
         <template #items="{category}">
           <div class="py-2 fs-lg d-flex" v-for="(news,i) in category.newsList" :key="i">
             <span class="text-info">[{{news.categoryName}}]</span>
@@ -50,7 +50,23 @@
             <span class="text-grey-1 fs-sm">{{ news.createdAt | date}}</span>
           </div>
         </template>
-      </m-list-card>
+      </m-list-card> -->
+
+
+       <m-list-card icon="menu1" title="新闻资讯" :categories="newsCats">
+      <template #items="{category}">
+        <router-link 
+        tag="div"
+        :to="`/articles/${news._id}`"
+        class="py-2 fs-lg d-flex" 
+        v-for="(news, i) in category.newsList" :key="i">
+          <span class="text-info">[{{news.categoryName}}]</span>
+          <span class="px-2">|</span>
+          <span class="flex-1 text-dark-1 text-ellipsis pr-2">{{news.title}}</span>
+          <span class="text-grey-1 fs-sm">{{news.createdAt | date}}</span>
+        </router-link>
+      </template>
+    </m-list-card>
 
       <m-list-card icon="card-hero" title="英雄列表" :categories="heroCats">
       <template #items="{category}">
