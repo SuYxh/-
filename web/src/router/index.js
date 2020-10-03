@@ -22,6 +22,7 @@ Vue.use(VueRouter)
       }
     ]
   },
+  {path: '/heroes/:id', name: 'hero', component: () => import('../views/Hero.vue'), props: true},
   // {
   //   path: '/about',
   //   name: 'About',
