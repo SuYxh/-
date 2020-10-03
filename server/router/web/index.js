@@ -58,7 +58,8 @@ module.exports = app => {
             }
         }).lean()
         */
-        // 聚合查询 聚合查询的参数  聚合管道
+        // 聚合查询 聚合查询的参数  聚合管道 ，
+        //  aggregate ：
         const parent = await Category.findOne({
             name: '新闻分类'
         })
@@ -176,32 +177,33 @@ module.exports = app => {
     })
 
     // // 英雄列表接口
-    // router.get('/heroes/list', async (req, res) => {
-    //     const parent = await Category.findOne({
-    //         name: '英雄分类'
-    //     })
-    //     const cats = await Category.aggregate([
-    //         { $match: { parent: parent._id } },
-    //         {
-    //             $lookup: {
-    //                 from: 'heroes',
-    //                 localField: '_id',
-    //                 foreignField: 'categories',
-    //                 as: 'heroList'
-    //             }
-    //         }
-    //     ])
-    //     const subCats = cats.map(v => v._id)
-    //     cats.unshift({
-    //         name: '热门',
-    //         heroList: await Hero.find().where({
-    //             categories: { $in: subCats }
-    //         }).limit(10).lean()
-    //     })
+    router.get('/heroes/list', async (req, res) => {
+        const parent = await Category.findOne({
+            name: '英雄分类'
+        })
+        // lookup 关联查询
+        const cats = await Category.aggregate([
+            { $match: { parent: parent._id } },
+            {
+                $lookup: {
+                    from: 'heroes',
+                    localField: '_id',
+                    foreignField: 'categories',
+                    as: 'heroList'
+                }
+            }
+        ])
+        const subCats = cats.map(v => v._id)
+        cats.unshift({
+            name: '热门',
+            heroList: await Hero.find().where({
+                categories: { $in: subCats }
+            }).limit(10).lean()
+        })
 
-    //     res.send(cats)
+        res.send(cats)
 
-    // });
+    });
 
     // // 文章详情
     // router.get('/articles/:id', async (req, res) => {
